@@ -1,0 +1,7 @@
+/Database
+/__pycache__
+
+Pipfile
+Pipfile.lock
+
+yolov8s.pt
