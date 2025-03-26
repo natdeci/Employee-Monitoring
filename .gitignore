@@ -5,3 +5,7 @@ Pipfile
 Pipfile.lock
 
 yolov8s.pt
+
+activity_log.csv
+synthetic_monitoring_data.csv
+graph.py

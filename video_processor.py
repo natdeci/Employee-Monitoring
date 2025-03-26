@@ -7,7 +7,9 @@ class VideoProcessor:
         self.yolo = yolo
         self.face_recognition = face_recognition
         self.activity_recognition = activity_recognition
-        self.cap = cv2.VideoCapture(0)
+        self.frame_count = 0
+        self.frame_skip = 100
+        self.cap = cv2.VideoCapture("D:/Kuliah/8th/Dataset/20250325_102420.mp4")
         if not self.cap.isOpened():
             raise ValueError("Error: Could not open webcam.")
 
@@ -18,6 +20,10 @@ class VideoProcessor:
             if not ret:
                 print("Error: Failed to read frame.")
                 break
+
+            self.frame_count += 1
+            if self.frame_count % self.frame_skip != 0:
+                continue
 
             detections = self.yolo.detect_people(frame)
             for x1, y1, x2, y2 in detections:
